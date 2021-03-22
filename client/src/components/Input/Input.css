@@ -1,0 +1,41 @@
+.todo-bar {
+    padding: 16px;
+    display: flex;
+    justify-content: flex-end;
+    height: 64px;
+}
+
+.todo-bar .input {
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    margin-left: 16px;
+}
+
+.todo-bar .button {
+    background-color: var(--light);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    padding: 18px;
+    background-color: var(--secondary);
+    font-family: "Montserrat", sans-serif;
+}
+
+.todo-bar .button:hover {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.todo-bar .input {
+    background-color: var(--secondary);
+    border: none;
+    padding: 16px;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--dark);
+    font-family: "Montserrat", sans-serif;
+}
+
+.todo-bar .input:focus {
+    outline: var(--soft);
+}
