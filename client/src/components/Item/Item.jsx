@@ -1,7 +1,7 @@
 import React from 'react'
 import './Item.css'
 
-const Item = ({ id, text, checked }) => {
+const Item = ({ id, description }) => {
 
     const handleDelete = () => {
         
@@ -10,7 +10,7 @@ const Item = ({ id, text, checked }) => {
     return (
         <div className='item'>
           <h3 className='item-text'>
-            {text}
+            {description}
           </h3>
           <div className='item-actions'>
             <button
