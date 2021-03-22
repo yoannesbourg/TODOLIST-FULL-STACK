@@ -34,7 +34,7 @@ const List = () => {
         <ul className='list'>
             {todos.map(item => (
                 <Item
-                key={item.id}
+                key={item.todo_id}
                 id={item.id}
                 description={item.description}
                 checked={false}
