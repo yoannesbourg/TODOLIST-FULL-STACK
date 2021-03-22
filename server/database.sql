@@ -1,6 +1,6 @@
-CREATE DATABASE todolist;
+CREATE DATABASE fstodolist;
 
-CREATE TABLE todo {
+CREATE TABLE todo (
     todo_id SERIAL PRIMARY KEY,
     description VARCHAR(255)
-};
+);
