@@ -2,17 +2,33 @@ import React, { useState } from 'react'
 import './Input.css'
 
 const Input = () => {
-    const [text, setText] = useState('')
+    const [description, setDescription] = useState('')
 
     const handleInput = (event) => {
-        setText(event.target.value)
+        setDescription(event.target.value)
     }
 
     const add = () => {
-        if (text) {
-            console.log(text)
+        if (description) {
+            console.log(description)
         }
-        setText('')
+        setDescription('')
+    }
+
+    const onSubmitForm = async e => {
+        e.preventDefault()
+        try {
+            const body = {description}
+            const response = await fetch("http://localhost:5000/todos", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+            })
+
+            console.log(response)
+        } catch (err) {
+            console.error(err.message)
+        }
     }
 
     return (
@@ -21,12 +37,12 @@ const Input = () => {
                 className='input'
                 placeHolder='write your todo'
                 onChange={handleInput}
-                value={text}
+                value={description}
             />
             <button
                 className='button'
                 type='submit'
-                onClick={add}
+                onClick={onSubmitForm}
             >
                 Add
             </button>
