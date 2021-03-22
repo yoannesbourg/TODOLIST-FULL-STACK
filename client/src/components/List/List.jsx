@@ -4,7 +4,7 @@ import Item from '../Item/Item'
 
 import '../../App.css'
 
-const list = {
+const todolist = {
     id: 1,
     text: 'Buy bananas',
     checked: true
@@ -16,7 +16,7 @@ const List = () => {
       <>
         <Input />
         <ul className='list'>
-          {list.map(item => (
+          {todolist.map(item => (
             <Item
               key={item.id}
               id={item.id}
