@@ -3,10 +3,6 @@ import './Item.css'
 
 const Item = ({ id, text, checked }) => {
 
-    const handleCheck = () => {
-
-    }
-
     const handleDelete = () => {
         
     }
@@ -17,12 +13,6 @@ const Item = ({ id, text, checked }) => {
             {text}
           </h3>
           <div className='item-actions'>
-            <input
-              className='item-check'
-              onChange={handleCheck}
-              type='checkbox'
-              checked={checked}
-            />
             <button
               className='item-delete'
               onClick={handleDelete}
