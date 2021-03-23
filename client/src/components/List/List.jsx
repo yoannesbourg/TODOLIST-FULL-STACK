@@ -22,7 +22,7 @@ const List = () => {
     }, [todos])
 
     const deleteItem = id => {
-      setTodos(todos.filter(todo => todo.todo_id != id))
+      setTodos(todos.filter(todo => todo.todo_id !== id))
     }
 
     return (

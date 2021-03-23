@@ -1,5 +1,6 @@
 import React from 'react'
 import './Item.css'
+import Text from '../Text/Text'
 
 const Item = ({ id, description, onDelete }) => {
 
@@ -16,9 +17,10 @@ const Item = ({ id, description, onDelete }) => {
 
     return (
         <div className='item'>
-          <h3 className='item-text'>
-            {description}
-          </h3>
+          <Text 
+            description={description}
+            edit={false}
+          />
           <div className='item-actions'>
             <button
               className='item-delete'
