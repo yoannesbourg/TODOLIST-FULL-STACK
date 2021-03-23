@@ -5,7 +5,7 @@ const Item = ({ id, description, onDelete }) => {
 
     const handleDelete = async id => {
         try {
-          const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
+          await fetch(`http://localhost:5000/todos/${id}`, {
             method: "DELETE"
           })
           onDelete(id)
