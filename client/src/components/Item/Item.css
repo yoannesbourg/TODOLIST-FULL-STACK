@@ -19,6 +19,7 @@
     background: transparent;
     font-size: 20px;
     color: var(--dark);
+    cursor: pointer;
 }
 
 .edit-input {
@@ -29,6 +30,14 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     border: none;
-    background: red;
+    background: transparent;
     color: var(--dark);
+}
+
+.edit-button {
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    background-color: var(--secondary);
+    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
 }

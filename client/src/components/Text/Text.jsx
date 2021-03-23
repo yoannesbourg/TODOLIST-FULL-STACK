@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../Item/Item.css'
 
 const TextTodo = ({description}) => {
@@ -10,21 +10,33 @@ const TextTodo = ({description}) => {
 }
 
 const EditTextTodo = ({description}) => {
+    const [input, setInput] = useState(description)
+
+    const handleInput = (event) => {
+        console.log(event.target.value)
+        setInput(event.target.value)
+    }
+
+    const handleKeyDown = (event) => {
+        if(event.keyCode === 13) {
+            console.log('yes!')
+        }
+    }
+
+
     return (
         <input 
                 className='edit-input'
-                value={description}
+                value={input}
+                onChange={handleInput}
+                onKeyDown={handleKeyDown}
             />
     )
 }
 
-const Text = ({description, edit}) => {
-    const [editState, setEditState] = useState(edit)
+const Text = ({description, edit, handleEdit}) => {
+    const [text, setText] = useState(description)
 
-    const handleClick = () => {
-        console.log(editState)
-        setEditState(!editState)
-    }
 
     return (
         <div>
@@ -36,7 +48,7 @@ const Text = ({description, edit}) => {
                 description={description}
                 
             />}
-            <button onClick={handleClick}>Edit</button>
+            
         </div>
     )
 }

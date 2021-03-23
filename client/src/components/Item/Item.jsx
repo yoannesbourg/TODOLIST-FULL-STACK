@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Item.css'
 import Text from '../Text/Text'
 
 const Item = ({ id, description, onDelete }) => {
+
+  const [editState, setEditState] = useState(false)
+
+    const handleEdit = () => {
+      console.log(editState)
+      setEditState(!editState)
+    }
 
     const handleDelete = async id => {
         try {
@@ -19,7 +26,8 @@ const Item = ({ id, description, onDelete }) => {
         <div className='item'>
           <Text 
             description={description}
-            edit={false}
+            edit={editState}
+            handleEdit={handleEdit}
           />
           <div className='item-actions'>
             <button
@@ -27,8 +35,12 @@ const Item = ({ id, description, onDelete }) => {
               onClick={() => handleDelete(id)}
               type='button'
             >
-              {' X '}
+              X
             </button>
+            <button 
+              onClick={handleEdit}
+              className="edit-button"
+            >Edit</button>
           </div>
         </div>
       )
