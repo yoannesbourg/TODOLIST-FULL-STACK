@@ -24,7 +24,8 @@ const Item = ({ id, description, onDelete }) => {
 
     return (
         <div className='item'>
-          <Text 
+          <Text
+            id={id} 
             description={description}
             edit={editState}
             handleEdit={handleEdit}
