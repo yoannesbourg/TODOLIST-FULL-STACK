@@ -4,12 +4,6 @@ import Item from '../Item/Item'
 
 import '../../App.css'
 
-const item = {
-    id: 1,
-    text: 'Buy bananas',
-    checked: true
-}
-
 const List = () => {
 
     const [todos, setTodos] = useState([])
@@ -28,6 +22,10 @@ const List = () => {
         getTodos()
     }, [])
 
+    const deleteItem = id => {
+      setTodos(todos.filter(todo => todo.todo_id != id))
+    }
+
     return (
       <>
         <Input />
@@ -35,9 +33,10 @@ const List = () => {
             {todos.map(item => (
                 <Item
                 key={item.todo_id}
-                id={item.id}
+                id={item.todo_id}
                 description={item.description}
                 checked={false}
+                onDelete={deleteItem}
               />
             ))}
         </ul>

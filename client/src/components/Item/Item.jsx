@@ -1,10 +1,17 @@
 import React from 'react'
 import './Item.css'
 
-const Item = ({ id, description }) => {
+const Item = ({ id, description, onDelete }) => {
 
-    const handleDelete = () => {
-        
+    const handleDelete = async id => {
+        try {
+          const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
+            method: "DELETE"
+          })
+          onDelete(id)
+        } catch (err) {
+          console.error(err.message)
+        }
     }
 
     return (
@@ -15,7 +22,7 @@ const Item = ({ id, description }) => {
           <div className='item-actions'>
             <button
               className='item-delete'
-              onClick={handleDelete}
+              onClick={() => handleDelete(id)}
               type='button'
             >
               {' X '}
