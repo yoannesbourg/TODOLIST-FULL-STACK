@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Input.css'
 
 const Input = () => {
@@ -8,26 +8,21 @@ const Input = () => {
         setDescription(event.target.value)
     }
 
-    const add = () => {
-        if (description) {
-            console.log(description)
-        }
-        setDescription('')
-    }
-
-    const onSubmitForm = async e => {
+    const add = async e => {
         e.preventDefault()
-        try {
-            const body = {description}
-            const response = await fetch("http://localhost:5000/todos", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(body)
-            })
-
-            console.log(response)
-        } catch (err) {
-            console.error(err.message)
+        if(description) {
+            try {
+                const body = {description}
+                const response = await fetch("http://localhost:5000/todos", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(body)
+                })
+    
+                console.log(response)
+            } catch (err) {
+                console.error(err.message)
+            }
         }
     }
 
@@ -42,7 +37,7 @@ const Input = () => {
             <button
                 className='button'
                 type='submit'
-                onClick={onSubmitForm}
+                onClick={add}
             >
                 Add
             </button>

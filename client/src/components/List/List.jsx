@@ -3,7 +3,6 @@ import Input from '../Input/Input'
 import Item from '../Item/Item'
 
 import '../../App.css'
-
 const List = () => {
 
     const [todos, setTodos] = useState([])
@@ -20,7 +19,7 @@ const List = () => {
 
     useEffect(() => {
         getTodos()
-    }, [])
+    }, [todos])
 
     const deleteItem = id => {
       setTodos(todos.filter(todo => todo.todo_id != id))
