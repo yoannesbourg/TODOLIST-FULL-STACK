@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './Input.css'
 
 const Input = () => {
@@ -10,6 +10,7 @@ const Input = () => {
 
     const add = async e => {
         e.preventDefault()
+        console.log(e)
         if(description) {
             try {
                 const body = {description}
@@ -18,11 +19,16 @@ const Input = () => {
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(body)
                 })
-    
-                console.log(response)
+                setDescription('')
             } catch (err) {
                 console.error(err.message)
             }
+        }
+    }
+
+    const handleKeyDown = (event) => {
+        if(event.keyCode === 13) {
+            add(event)
         }
     }
 
@@ -33,6 +39,7 @@ const Input = () => {
                 placeHolder='write your todo'
                 onChange={handleInput}
                 value={description}
+                onKeyDown={handleKeyDown}
             />
             <button
                 className='button'
