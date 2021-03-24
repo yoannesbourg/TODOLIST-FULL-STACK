@@ -34,7 +34,7 @@
     color: var(--dark);
 }
 
-.edit-button {
+.button {
     border: none;
     padding: 8px;
     cursor: pointer;

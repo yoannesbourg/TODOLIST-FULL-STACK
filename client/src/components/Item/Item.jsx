@@ -40,7 +40,7 @@ const Item = ({ id, description, onDelete }) => {
             </button>
             <button 
               onClick={handleEdit}
-              className="edit-button"
+              className="button"
             >Edit</button>
           </div>
         </div>
