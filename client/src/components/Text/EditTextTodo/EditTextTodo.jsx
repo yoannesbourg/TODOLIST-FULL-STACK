@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import '../../Item/Item.css'
 
-const EditTextTodo = ({todoText, id, handleEditState}) => {
+const EditTextTodo = ({todoText, id, handleEditState, handleInputOnChange}) => {
     const [description, setDescription] = useState(todoText)
 
     const handleInput = (event) => {
         setDescription(event.target.value)
+        handleInputOnChange(event.target.value)
     }
 
     const handleKeyDown = (event) => {
@@ -13,21 +14,22 @@ const EditTextTodo = ({todoText, id, handleEditState}) => {
             console.log('yes!')
         }
     }
-    const updateTodo = async (e) => {
-        e.preventDefault()
-        try {
-            const body = { description }
-            const response = await fetch(`http://localhost:5000/todos/${id}`, {
-            method: "PUT",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(body)
-          })
-          window.location = "/"
-          handleEditState()
-        } catch (err) {
-          console.error(err.message)
-        }
-    }
+    // const updateTodo = async (e) => {
+    //     e.preventDefault()
+    //     try {
+            
+    //         const body = { description }
+    //         const response = await fetch(`http://localhost:5000/todos/${id}`, {
+    //         method: "PUT",
+    //         headers: {"Content-Type": "application/json"},
+    //         body: JSON.stringify(body)
+    //       })
+    //       window.location = "/"
+    //       handleEditState()
+    //     } catch (err) {
+    //       console.error(err.message)
+    //     }
+    // }
 
     return (
        <div>
@@ -38,12 +40,12 @@ const EditTextTodo = ({todoText, id, handleEditState}) => {
                 onKeyDown={handleKeyDown}
             />
 
-            <button
+            {/* <button
                 onClick={updateTodo}
                 className="button"
             >
                 Update
-            </button>
+            </button> */}
        </div>
     )
 }

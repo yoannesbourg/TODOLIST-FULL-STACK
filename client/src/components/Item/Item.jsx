@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import './Item.css'
 import Text from '../Text/Text'
+import EditTextTodo from '../Text/EditTextTodo/EditTextTodo'
+import TextTodo from '../Text/TextTodo/TextTodo'
+import { updateTodo } from '../../RequestFunctions/UpdateTodo'
 
 const Item = ({ id, description, onDelete }) => {
 
@@ -8,6 +11,10 @@ const Item = ({ id, description, onDelete }) => {
 
     const handleEdit = () => {
       setEditState(!editState)
+    }
+
+    const handleInputOnChange = (newDescription) => {
+      return newDescription
     }
 
     const handleDelete = async id => {
@@ -21,9 +28,72 @@ const Item = ({ id, description, onDelete }) => {
         }
     }
 
+   const updateTodo = async ( e,description, id, handleEditFunction) => {
+      e.preventDefault()
+      try {
+          const body = { description }
+          const response = await fetch(`http://localhost:5000/todos/${id}`, {
+          method: "PUT",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(body)
+        })
+        window.location = "/"
+        handleEditFunction()
+      } catch (err) {
+        console.error(err.message)
+      }
+  }
+
     return (
         <div className='item'>
-          <Text
+          
+          {editState? 
+            <EditTextTodo 
+                todoText={description}
+                id={id}
+                editState={editState}
+                handleEditState={handleEdit}
+                handleInputOnChange={console.log}
+            /> : 
+            <TextTodo 
+                todoText={description}                
+            />}
+            <div className='item-actions'>
+
+              {/* Update */}
+              <button 
+                onClick={(e) => {
+                  e.preventDefault()
+                  updateTodo(e, 'description', id, handleEdit)}}
+                className="button"
+              >Update
+              </button>
+
+              {/* Edit */}
+              <button 
+                onClick={handleEdit}
+                className="button"
+              >Edit
+              </button>
+
+              {/* Delete */}
+              <button
+                className='item-delete button'
+                onClick={() => handleDelete(id)}
+                type='button'
+              >
+                X
+              </button>
+            </div>
+
+
+
+
+
+
+
+
+          {/* <Text
             id={id} 
             description={description}
             edit={editState}
@@ -42,7 +112,7 @@ const Item = ({ id, description, onDelete }) => {
             >
               X
             </button>
-          </div>
+          </div> */}
         </div>
       )
 }
