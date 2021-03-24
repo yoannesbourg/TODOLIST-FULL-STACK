@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Item.css'
 import Text from '../Text/Text'
+import Button from '../Buttons/Button'
 
 const Item = ({ id, description, onDelete }) => {
 
@@ -30,11 +31,11 @@ const Item = ({ id, description, onDelete }) => {
             handleEdit={handleEdit}
           />
           <div className='item-actions'>
-            <button 
-              onClick={handleEdit}
-              className="button"
-            >Edit
-            </button>
+
+
+          <Button edit={editState} handleEdit={handleEdit}/>
+
+
             <button
               className='item-delete button'
               onClick={() => handleDelete(id)}

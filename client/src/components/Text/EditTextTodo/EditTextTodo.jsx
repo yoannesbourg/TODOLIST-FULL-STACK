@@ -38,12 +38,12 @@ const EditTextTodo = ({todoText, id, handleEditState}) => {
                 onKeyDown={handleKeyDown}
             />
 
-            <button
+            {/* <button
                 onClick={updateTodo}
                 className="button"
             >
                 Update
-            </button>
+            </button> */}
        </div>
     )
 }
