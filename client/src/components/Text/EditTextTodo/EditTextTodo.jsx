@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import '../../Item/Item.css'
 
-const EditTextTodo = ({description, id, handleEditState}) => {
-    const [input, setInput] = useState(description)
+const EditTextTodo = ({todoText, id, handleEditState}) => {
+    const [description, setDescription] = useState(todoText)
 
     const handleInput = (event) => {
-        console.log(event.target.value)
-        setInput(event.target.value)
+        setDescription(event.target.value)
     }
 
     const handleKeyDown = (event) => {
@@ -16,6 +15,7 @@ const EditTextTodo = ({description, id, handleEditState}) => {
     }
     const updateTodo = async (e) => {
         console.log(id)
+        e.preventDefault()
         try {
             const body = { description }
             const response = await fetch(`http://localhost:5000/todos/${id}`, {
@@ -23,6 +23,7 @@ const EditTextTodo = ({description, id, handleEditState}) => {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(body)
           })
+          console.log(body)
           handleEditState()
           console.log(response)
         } catch (err) {
@@ -34,14 +35,17 @@ const EditTextTodo = ({description, id, handleEditState}) => {
        <div>
             <input 
                 className='edit-input'
-                value={input}
+                value={description}
                 onChange={handleInput}
                 onKeyDown={handleKeyDown}
             />
 
             <button
                 onClick={updateTodo}
-            >Update</button>
+                className="button"
+            >
+                Update
+            </button>
        </div>
     )
 }

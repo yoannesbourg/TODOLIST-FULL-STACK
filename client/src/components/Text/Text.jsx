@@ -17,7 +17,7 @@ const Text = ({id, description, edit, handleEdit}) => {
                 handleEditState={handleEdit}
             /> : 
             <TextTodo 
-                description={description}
+                todoText={description}
                 
             />}
             

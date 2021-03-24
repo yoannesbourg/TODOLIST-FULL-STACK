@@ -7,7 +7,6 @@ const Item = ({ id, description, onDelete }) => {
   const [editState, setEditState] = useState(false)
 
     const handleEdit = () => {
-      console.log(editState)
       setEditState(!editState)
     }
 
