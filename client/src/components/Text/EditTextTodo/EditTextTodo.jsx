@@ -17,7 +17,7 @@ const EditTextTodo = ({description, id}) => {
     const updateTodo = async (e) => {
         console.log(id)
         try {
-            const body = description
+            const body = {description}
             const response = await fetch(`http://localhost:5000/todos/${id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
