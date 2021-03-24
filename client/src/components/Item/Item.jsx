@@ -12,7 +12,7 @@ const Item = ({ id, description, onDelete }) => {
 
     const handleDelete = async id => {
         try {
-          await fetch(`http://localhost:5000/todos/${id}`, {
+          const response = await fetch(`http://localhost:5000/todos/${id}`, {
             method: "DELETE"
           })
           onDelete(id)
@@ -30,17 +30,18 @@ const Item = ({ id, description, onDelete }) => {
             handleEdit={handleEdit}
           />
           <div className='item-actions'>
+            <button 
+              onClick={handleEdit}
+              className="button"
+            >Edit
+            </button>
             <button
-              className='item-delete'
+              className='item-delete button'
               onClick={() => handleDelete(id)}
               type='button'
             >
               X
             </button>
-            <button 
-              onClick={handleEdit}
-              className="button"
-            >Edit</button>
           </div>
         </div>
       )

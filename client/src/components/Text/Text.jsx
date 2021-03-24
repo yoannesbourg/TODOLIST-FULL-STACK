@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../Item/Item.css'
 import EditTextTodo from './EditTextTodo/EditTextTodo'
 import TextTodo from './TextTodo/TextTodo'
 
 const Text = ({id, description, edit, handleEdit}) => {
-    const [text, setText] = useState(description)
-
 
     return (
         <div>
