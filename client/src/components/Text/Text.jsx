@@ -11,14 +11,13 @@ const Text = ({id, description, edit, handleEdit}) => {
         <div>
             {edit? 
             <EditTextTodo 
-                description={description}
+                todoText={description}
                 id={id}
                 editState={edit}
                 handleEditState={handleEdit}
             /> : 
             <TextTodo 
-                todoText={description}
-                
+                todoText={description}                
             />}
             
         </div>

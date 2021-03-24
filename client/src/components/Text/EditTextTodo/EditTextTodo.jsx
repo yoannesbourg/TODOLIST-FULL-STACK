@@ -6,6 +6,8 @@ const EditTextTodo = ({todoText, id, handleEditState}) => {
 
     const handleInput = (event) => {
         setDescription(event.target.value)
+        console.log(description)
+        console.log(todoText)
     }
 
     const handleKeyDown = (event) => {
@@ -24,7 +26,9 @@ const EditTextTodo = ({todoText, id, handleEditState}) => {
             body: JSON.stringify(body)
           })
           console.log(body)
+          window.location = "/"
           handleEditState()
+
           console.log(response)
         } catch (err) {
           console.error(err.message)

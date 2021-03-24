@@ -1,10 +1,10 @@
 import React from 'react'
 import '../../Item/Item.css'
 
-const TextTodo = ({description}) => {
+const TextTodo = ({todoText}) => {
     return (
         <h3 className='item-text'>
-            {description}
+            {todoText}
         </h3>
     )
 }
