@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../../Item/Item.css'
 
-const EditTextTodo = ({description, id}) => {
+const EditTextTodo = ({description, id, handleEditState}) => {
     const [input, setInput] = useState(description)
 
     const handleInput = (event) => {
@@ -17,13 +17,13 @@ const EditTextTodo = ({description, id}) => {
     const updateTodo = async (e) => {
         console.log(id)
         try {
-            const body = {description}
+            const body = { description }
             const response = await fetch(`http://localhost:5000/todos/${id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(body)
           })
-
+          handleEditState()
           console.log(response)
         } catch (err) {
           console.error(err.message)
