@@ -8,13 +8,15 @@ import { updateTodo } from '../../RequestFunctions/UpdateTodo'
 const Item = ({ id, description, onDelete }) => {
 
   const [editState, setEditState] = useState(false)
+  const [text, setText] = useState(description)
 
     const handleEdit = () => {
       setEditState(!editState)
     }
 
-    const handleInputOnChange = (newDescription) => {
-      return newDescription
+    const handlePutRequest = (newDescription) => {
+      setText(newDescription)
+      console.log(text)
     }
 
     const handleDelete = async id => {
@@ -53,7 +55,7 @@ const Item = ({ id, description, onDelete }) => {
                 id={id}
                 editState={editState}
                 handleEditState={handleEdit}
-                handleInputOnChange={console.log}
+                updateText={handlePutRequest}
             /> : 
             <TextTodo 
                 todoText={description}                
@@ -64,8 +66,8 @@ const Item = ({ id, description, onDelete }) => {
               <button 
                 onClick={(e) => {
                   e.preventDefault()
-                  console.log(handleEdit)
-                  // updateTodo(e, 'description', id, handleEdit)
+
+                  updateTodo(e, text, id, handleEdit)
                 }                }
                 className="button"
               >Update
