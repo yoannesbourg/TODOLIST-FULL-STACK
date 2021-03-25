@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../../Item/Item.css'
 
-const EditTextTodo = ({todoText, id, handleEditState, updateText}) => {
+const EditTextTodo = ({todoText, handleEditState, updateText}) => {
     const [description, setDescription] = useState(todoText)
 
     const handleInput = (event) => {
@@ -9,25 +9,12 @@ const EditTextTodo = ({todoText, id, handleEditState, updateText}) => {
         updateText(event.target.value)
     }
 
-    const handleKeyDown = (event) => {
-        if(event.keyCode === 13) {
-            console.log('yes!')
-        }
-    }
-    // const updateTodo = async (e) => {
-    //     e.preventDefault()
-    //     try {
+    // const handleKeyDown = (event) => {
+    //     if(event.keyCode === 13) {
+    //         setDescription(event.target.value)
+    //     updateText(event.target.value)
+    //     handleEditState()
             
-    //         const body = { description }
-    //         const response = await fetch(`http://localhost:5000/todos/${id}`, {
-    //         method: "PUT",
-    //         headers: {"Content-Type": "application/json"},
-    //         body: JSON.stringify(body)
-    //       })
-    //       window.location = "/"
-    //       handleEditState()
-    //     } catch (err) {
-    //       console.error(err.message)
     //     }
     // }
 
@@ -37,15 +24,8 @@ const EditTextTodo = ({todoText, id, handleEditState, updateText}) => {
                 className='edit-input'
                 value={description}
                 onChange={handleInput}
-                onKeyDown={handleKeyDown}
+                // onKeyDown={handleKeyDown}
             />
-
-            {/* <button
-                onClick={updateTodo}
-                className="button"
-            >
-                Update
-            </button> */}
        </div>
     )
 }

@@ -1,122 +1,74 @@
 import React, { useState } from 'react'
 import './Item.css'
-import Text from '../Text/Text'
 import EditTextTodo from '../Text/EditTextTodo/EditTextTodo'
 import TextTodo from '../Text/TextTodo/TextTodo'
 import { updateTodo } from '../../RequestFunctions/UpdateTodo'
+import { deleteTodo } from '../../RequestFunctions/DeleteTodo'
 
-const Item = ({ id, description, onDelete }) => {
 
-  const [editState, setEditState] = useState(false)
+const Item = ({ id, description, onDelete, selected }) => {
+
+  const [isEdit, setIsEdit] = useState(false)
   const [text, setText] = useState(description)
 
-    const handleEdit = () => {
-      setEditState(!editState)
+    //Eddit button toggles this state and changes todo in input
+    const toggleEdit = () => {
+      setIsEdit(!isEdit)
     }
 
-    const handlePutRequest = (newDescription) => {
+    //Change update todo text status with new description
+    const handleTodoChange = newDescription => {
       setText(newDescription)
-      console.log(text)
     }
-
-    const handleDelete = async id => {
-        try {
-          const response = await fetch(`http://localhost:5000/todos/${id}`, {
-            method: "DELETE"
-          })
-          onDelete(id)
-        } catch (err) {
-          console.error(err.message)
-        }
-    }
-
-   const updateTodo = async ( e,description, id, handleEditFunction) => {
-      e.preventDefault()
-      try {
-          const body = { description }
-          const response = await fetch(`http://localhost:5000/todos/${id}`, {
-          method: "PUT",
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify(body)
-        })
-        window.location = "/"
-        handleEditFunction()
-      } catch (err) {
-        console.error(err.message)
-      }
-  }
+    // console.log(selected)
 
     return (
-        <div className='item'>
+        <div className={selected? 'item .selected-item' : 'item'}>
           
-          {editState? 
+          {isEdit? 
             <EditTextTodo 
                 todoText={description}
-                id={id}
-                editState={editState}
-                handleEditState={handleEdit}
-                updateText={handlePutRequest}
+                editState={setIsEdit}
+                handleEditState={toggleEdit}
+                updateText={handleTodoChange}
             /> : 
             <TextTodo 
                 todoText={description}                
-            />}
-            <div className='item-actions'>
+            />
+          }
+                    
+          <div className='item-actions'>
 
-              {/* Update */}
+            {isEdit? 
+              // Edit
               <button 
                 onClick={(e) => {
                   e.preventDefault()
-
-                  updateTodo(e, text, id, handleEdit)
-                }                }
+                  updateTodo(e, text, id, toggleEdit)
+                }}
                 className="button"
               >Update
-              </button>
-
-              {/* Edit */}
+              </button> 
+              :
+                // Update
               <button 
-                onClick={handleEdit}
+                onClick={toggleEdit}
                 className="button"
               >Edit
               </button>
+            }
 
-              {/* Delete */}
-              <button
-                className='item-delete button'
-                onClick={() => handleDelete(id)}
-                type='button'
-              >
-                X
-              </button>
-            </div>
-
-
-
-
-
-
-
-
-          {/* <Text
-            id={id} 
-            description={description}
-            edit={editState}
-            handleEdit={handleEdit}
-          />
-          <div className='item-actions'>
-            <button 
-              onClick={handleEdit}
-              className="button"
-            >Edit
-            </button>
+            {/* Delete */}
             <button
               className='item-delete button'
-              onClick={() => handleDelete(id)}
+              onClick={() => deleteTodo(id, onDelete)}
               type='button'
             >
-              X
+            X
             </button>
-          </div> */}
+          
+          </div>
+
         </div>
       )
 }
