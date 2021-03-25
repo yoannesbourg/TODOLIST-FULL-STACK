@@ -20,7 +20,6 @@ const Item = ({ id, description, onDelete, selected }) => {
     const handleTodoChange = newDescription => {
       setText(newDescription)
     }
-    // console.log(selected)
 
     return (
         <div className={selected? 'item .selected-item' : 'item'}>
@@ -39,22 +38,27 @@ const Item = ({ id, description, onDelete, selected }) => {
                     
           <div className='item-actions'>
 
-            {isEdit? 
-              // Edit
+            {isEdit? //Is edit state on true?
+
+              // Return Edit button
               <button 
                 onClick={(e) => {
                   e.preventDefault()
                   updateTodo(e, text, id, toggleEdit)
                 }}
                 className="button"
-              >Update
+              >
+                Update
               </button> 
-              :
-                // Update
+
+              : //on false?
+
+              // Return Update button
               <button 
                 onClick={toggleEdit}
                 className="button"
-              >Edit
+              >
+                Edit
               </button>
             }
 
@@ -64,11 +68,9 @@ const Item = ({ id, description, onDelete, selected }) => {
               onClick={() => deleteTodo(id, onDelete)}
               type='button'
             >
-            X
+              X
             </button>
-          
           </div>
-
         </div>
       )
 }
