@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../../Item/Item.css'
 
-const EditTextTodo = ({todoText, handleEditState, updateText}) => {
+const EditTextTodo = ({todoText, updateText}) => {
     const [description, setDescription] = useState(todoText)
 
     const handleInput = (event) => {
