@@ -9,22 +9,12 @@ const EditTextTodo = ({todoText, handleEditState, updateText}) => {
         updateText(event.target.value)
     }
 
-    // const handleKeyDown = (event) => {
-    //     if(event.keyCode === 13) {
-    //         setDescription(event.target.value)
-    //     updateText(event.target.value)
-    //     handleEditState()
-            
-    //     }
-    // }
-
     return (
        <div>
             <input 
                 className='edit-input'
                 value={description}
                 onChange={handleInput}
-                // onKeyDown={handleKeyDown}
             />
        </div>
     )
