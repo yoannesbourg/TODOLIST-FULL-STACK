@@ -70,9 +70,6 @@ h2 {
   cursor: pointer;
 } 
 
- .list .item:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
 /* 
 .checkbox {
   background-color: var(--light);

@@ -6,6 +6,7 @@ import '../../App.css'
 const List = () => {
 
     const [todos, setTodos] = useState([])
+    const [isSelected, setIsSelected] = useState(true)
 
     const getTodos = async () => {
         try {
@@ -36,6 +37,7 @@ const List = () => {
                 description={item.description}
                 checked={false}
                 onDelete={deleteItem}
+                selected={isSelected}
               />
             ))}
         </ul>
