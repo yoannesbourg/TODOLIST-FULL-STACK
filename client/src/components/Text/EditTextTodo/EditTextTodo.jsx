@@ -22,7 +22,7 @@ const EditTextTodo = ({todoText, id, handleEditState}) => {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(body)
           })
-          window.location = "/"
+        //   window.location = "/"
           handleEditState()
         } catch (err) {
           console.error(err.message)
