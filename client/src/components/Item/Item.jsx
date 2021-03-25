@@ -64,7 +64,9 @@ const Item = ({ id, description, onDelete }) => {
               <button 
                 onClick={(e) => {
                   e.preventDefault()
-                  updateTodo(e, 'description', id, handleEdit)}}
+                  console.log(handleEdit)
+                  // updateTodo(e, 'description', id, handleEdit)
+                }                }
                 className="button"
               >Update
               </button>

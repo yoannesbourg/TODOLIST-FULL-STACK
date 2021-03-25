@@ -7,7 +7,6 @@ export const updateTodo = async ( e,description, id, handleEditFunction) => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body)
       })
-      window.location = "/"
       handleEditFunction()
     } catch (err) {
       console.error(err.message)
