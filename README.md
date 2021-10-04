@@ -1,3 +1,3 @@
-# TODOLIST-FULL-STACK
+# Todolist fullstack
 
 Postgres + Express.js + React
